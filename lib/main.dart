@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ui_view/PageTwo.dart';
+import 'package:dindayulandary_mj5bmalam_multimediadanjaringan_latihan5/ui_view/login.dart';
+import 'package:dindayulandary_mj5bmalam_multimediadanjaringan_latihan5/ui_view/signup.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,37 +9,73 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Login Register',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
-      routes: <String, WidgetBuilder>{
-        '/page2': (BuildContext context) => PageTwo(),
-      },
+      home: HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Navigator"),
-        ),
-        body: Row(
+      backgroundColor: Colors.lightBlue,
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Icon(
+              Icons.android,
+              color: Colors.white,
+              size: 45,
+            ),
+            SizedBox(
+              height: 200,
+            ),
+            Text("Welcome to Flutter",
+                style: TextStyle(color: Colors.white, fontSize: 22)),
+            SizedBox(
+              height: 10,
+            ),
+            Text("Get real-time updates about what",
+                style: TextStyle(color: Colors.white, fontSize: 18)),
+            Text("maters to you",
+                style: TextStyle(color: Colors.white, fontSize: 18)),
+            SizedBox(
+              height: 20,
+            ),
             MaterialButton(
-              color: Colors.yellow,
-              child: Text("Page 2"),
+              minWidth: 210,
+              color: Colors.white,
+              textColor: Colors.lightBlue,
+              child: Text(
+                "Sign Up",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
               onPressed: () {
-                // dibuat berikutnya
-                Navigator.of(context).pushNamed('/page2');
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
               },
             ),
+            ElevatedButton(
+              child: Text(
+                "Log in",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Login()));
+              },
+            )
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
